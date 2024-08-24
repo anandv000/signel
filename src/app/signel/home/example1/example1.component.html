@@ -1,0 +1,24 @@
+<div class="p-4">
+    {{ firtName() }}
+
+    {{ lastName() }}
+<br>
+    {{ fullName() }}
+</div>
+
+
+<div class="container" style="width: 50%;">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div>
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+        </div>
+        <div>
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName">
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

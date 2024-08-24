@@ -1,0 +1,43 @@
+<div class="container" style="width: 50%;">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div>
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+        </div>
+        <div>
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName">
+        </div>
+        <div>
+            <label class="form-label">Password</label>
+            <input type="text" class="form-control" formControlName="password">
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="container mt-5">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of employList(); track $index) {
+                <tr>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.password}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
