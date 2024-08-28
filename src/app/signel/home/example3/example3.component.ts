@@ -49,6 +49,7 @@ export class Example3Component implements OnInit{
     })
     console.log(this.form.value);
   }
+
   effect = effect(()=> {
     console.log('it called :')
     this.employList()
