@@ -1,0 +1,33 @@
+<div class="container mt-5 w-50">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="mt-2">
+            <label class="form-label">Name<span class="text-danger">*</span> :-</label>
+            <input class="form-control" type="text" placeholder="Enter your name" formControlName="name">
+        </div>
+        <div class="mt-2">
+            <label class="form-label">Email<span class="text-danger">*</span> :-</label>
+            <input class="form-control" type="email" placeholder="Enter your email" formControlName="email">
+        </div>
+        <div class="mt-2 wrap">
+            <label class="form-label">Password<span class="text-danger">*</span> :-</label>
+            <input class="form-control" [type]="showPassword ? 'text' : 'password'" placeholder="Enter password" formControlName="password">
+            <i class="fas" [ngClass]="!showPassword ? 'fa-solid fa-eye-slash': 'fa-sharp fa-solid fa-eye'" (click)="togglePasswordVisibility('password')"></i>
+        </div>
+        <div class="mt-2 wrap">
+            <label class="form-label">Confirm Password<span class="text-danger">*</span> :-</label>
+            <input class="form-control" [type]="showConfirmPassword ? 'text' : 'password'"  placeholder="Enter confirm password" formControlName="confirmPassword">
+            <i class="fas" [ngClass]="!showConfirmPassword ? 'fa-solid fa-eye-slash': 'fa-sharp fa-solid fa-eye'" (click)="togglePasswordVisibility('confirmPassword')"></i>
+        </div>
+        <div class="mt-2">
+            <label class="form-label">Date of Birth<span class="text-danger">*</span> :-</label>
+            <input class="form-control" type="date" placeholder="Enter your Date of Birth" formControlName="dob">
+        </div>
+        <div class="mt-2">
+            <label class="form-label">Contect Number<span class="text-danger">*</span> :-</label>
+            <input class="form-control" type="number" placeholder="Enter your contect number" formControlName="contectNumber">
+        </div>
+        <div class="mt-4 text-center">
+            <button class="btn btn-outline-dark" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
