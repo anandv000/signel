@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { CommonService } from '../Service/common.service';
 
 @Component({
   selector: 'app-form-app',
@@ -14,8 +15,12 @@ export class FormAppComponent implements OnInit{
   form!: FormGroup;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
+  isInvalid: boolean = false;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(
+    private fb:FormBuilder, 
+    private commonService:CommonService
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.nonNullable.group({
@@ -50,6 +55,21 @@ export class FormAppComponent implements OnInit{
     } else {
       console.log("MyFormData is Invalid");
     }
+  }
+
+  getErrorMessage(controlName:string):any {
+    const control = this.form.get(controlName);
+    this.isInvalid = true;
+    if(control?.hasError('required')) {
+      return this.commonService.capitalizeFirstLetter(`${controlName} field is required.`);
+    } if (control?.hasError('pattern')) {
+      return this.commonService.capitalizeFirstLetter(`${controlName} field is Invalid.`);
+    } if(control?.hasError('email')) {
+      return this.commonService.capitalizeFirstLetter(`invalid ${controlName}.`);
+    } if(controlName == 'confirmPassword' && control?.hasError('passwordsMismatch')) {
+      return 'Password does not match.';
+    }
+    return '';
   }
 
 }

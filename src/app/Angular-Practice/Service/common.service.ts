@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class CommonService {
 
   constructor() { }
+
+  capitalizeFirstLetter(string:string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 }
